@@ -23,7 +23,27 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_version"
         style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:id="@+id/progressBar" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="下载进度"
+        android:textColor="#f00"
+        android:id="@+id/tv_progress"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/tv_progress"
+        android:visibility="invisible"
+        android:id="@+id/pb_download"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
 
 </RelativeLayout>
