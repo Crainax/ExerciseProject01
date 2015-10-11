@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -83,7 +84,7 @@ public class SplashActivity extends Activity {
 
 
     private void enterHome() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
         finish();
     }
@@ -270,6 +271,11 @@ public class SplashActivity extends Activity {
                         @Override
                         public void onSuccess(ResponseInfo<File> responseInfo) {
                             Toast.makeText(SplashActivity.this, "下载成功!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent();
+                            intent.setAction("android.intent.action.VIEW");
+                            intent.addCategory("android.intent.category.DEFAULT");
+                            intent.setDataAndType(Uri.fromFile(responseInfo.result), "application/vnd.android.package-archive");
+                            startActivityForResult(intent,0);
                         }
 
 
@@ -286,5 +292,17 @@ public class SplashActivity extends Activity {
             enterHome();
         }
 
+    }
+
+
+    /**
+     * 用户取消安装后进入主界面
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        enterHome();
     }
 }

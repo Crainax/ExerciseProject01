@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textSize="22sp"
+        android:textColor="@android:color/black"
+        android:text="功能列表"
+        android:background="#8f0"/>
+
+    <com.ruffneck.mobilesafer.view.FocusTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="有了手机卫士, 腰不酸了,腿不疼了,走路也有劲了, 手机卫士太NB了"
+        android:textColor="@android:color/black"
+        android:singleLine="true"
+        android:background="#eee"
+        android:textSize="16sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:ellipsize="marquee"/>
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/gv"
+        android:numColumns="3"
+        android:layout_weight="1"
+        android:verticalSpacing="20dp"/>
+</LinearLayout>
