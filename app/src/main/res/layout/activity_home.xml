@@ -5,13 +5,8 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:textSize="22sp"
-        android:textColor="@android:color/black"
-        android:text="功能列表"
-        android:background="#8f0"/>
+        style="@style/TitleStyle"
+        android:text="功能列表"/>
 
     <com.ruffneck.mobilesafer.view.FocusTextView
         android:layout_width="match_parent"
