@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -97,7 +98,10 @@ public class SplashActivity extends Activity {
         tvVersion = (TextView) findViewById(R.id.tv_version);
         tvVersion.setText("版本号:" + getVersionName());
 
-        checkUpdate();
+        SharedPreferences sp = getSharedPreferences("config", MODE_PRIVATE);
+
+        if (sp.getBoolean("autoUpdate", true)) checkUpdate();
+        else mHandler.sendEmptyMessageDelayed(CODE_ENTER_HOME, 2000);
     }
 
     /**
@@ -244,13 +248,13 @@ public class SplashActivity extends Activity {
     private void downloadApk() {
 
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            String target = Environment.getExternalStorageDirectory().getPath()+"/update.apk";
+            String target = Environment.getExternalStorageDirectory().getPath() + "/update.apk";
 
             final TextView tv_progress = (TextView) findViewById(R.id.tv_progress);
             final ProgressBar pb_download = (ProgressBar) findViewById(R.id.pb_download);
 
             HttpUtils http = new HttpUtils();
-             http.download(mDownloadUrl,target,
+            http.download(mDownloadUrl, target,
                     true, // 如果目标文件存在，接着未完成的部分继续下载。服务器不支持RANGE时将从新下载。
                     true, // 如果从请求返回信息中获取到文件名，下载完成后自动重命名。
                     new RequestCallBack<File>() {
@@ -265,7 +269,7 @@ public class SplashActivity extends Activity {
                         public void onLoading(long total, long current, boolean isUploading) {
                             tv_progress.setText("下载进度:" + (current * 100 / total));
                             pb_download.setMax((int) total);
-                            pb_download.setProgress((int)current);
+                            pb_download.setProgress((int) current);
                         }
 
                         @Override
@@ -275,7 +279,7 @@ public class SplashActivity extends Activity {
                             intent.setAction("android.intent.action.VIEW");
                             intent.addCategory("android.intent.category.DEFAULT");
                             intent.setDataAndType(Uri.fromFile(responseInfo.result), "application/vnd.android.package-archive");
-                            startActivityForResult(intent,0);
+                            startActivityForResult(intent, 0);
                         }
 
 
@@ -297,6 +301,7 @@ public class SplashActivity extends Activity {
 
     /**
      * 用户取消安装后进入主界面
+     *
      * @param requestCode
      * @param resultCode
      * @param data
