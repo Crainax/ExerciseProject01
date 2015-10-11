@@ -23,7 +23,7 @@ public class SettingActivity extends Activity {
 
         final SettingItemView sivUpdate = (SettingItemView) findViewById(R.id.siv);
 
-        sivUpdate.setTitle("自动更新设置");
+//        sivUpdate.setTitle("自动更新设置");
         sivUpdate.setChecked(sp.getBoolean("autoUpdate",true));
 
         sivUpdate.setOnClickListener(new View.OnClickListener() {

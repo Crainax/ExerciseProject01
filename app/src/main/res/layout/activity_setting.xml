@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ruffneck="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -11,6 +12,9 @@
     <com.ruffneck.mobilesafer.view.SettingItemView
         android:id="@+id/siv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        ruffneck:item_title="自动更新设置"
+        ruffneck:desc_on="自动更新已经开启"
+        ruffneck:desc_off="自动更新已经关闭"/>
 
 </LinearLayout>

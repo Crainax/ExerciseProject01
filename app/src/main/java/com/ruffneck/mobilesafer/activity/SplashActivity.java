@@ -13,7 +13,9 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -100,8 +102,15 @@ public class SplashActivity extends Activity {
 
         SharedPreferences sp = getSharedPreferences("config", MODE_PRIVATE);
 
+        //渐变动画效果
+        RelativeLayout rl_root = (RelativeLayout) findViewById(R.id.rl_root);
+        AlphaAnimation aa = new AlphaAnimation(0,1);
+        aa.setDuration(2000);
+        rl_root.startAnimation(aa);
+
         if (sp.getBoolean("autoUpdate", true)) checkUpdate();
         else mHandler.sendEmptyMessageDelayed(CODE_ENTER_HOME, 2000);
+
     }
 
     /**

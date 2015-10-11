@@ -19,4 +19,9 @@
         <item name="android:background">#8f0</item>
     </style>
 
+
+    <style name="PasswordTitleStyle" parent="TitleStyle">
+        <item name="android:background">#8f0</item>
+    </style>
+
 </resources>
