@@ -21,7 +21,7 @@
 
 
     <style name="PasswordTitleStyle" parent="TitleStyle">
-        <item name="android:background">#8f0</item>
+        <item name="android:background">#66ff6600</item>
     </style>
 
 </resources>
