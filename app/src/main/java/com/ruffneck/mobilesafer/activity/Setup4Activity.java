@@ -28,6 +28,7 @@ public class Setup4Activity extends Activity{
 
         startActivity(new Intent(this, LostFindActivity.class));
         finish();
+        overridePendingTransition(R.anim.tran_in, R.anim.tran_out);
     }
 
     public void previous(View v){
