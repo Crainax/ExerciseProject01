@@ -73,6 +73,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:background="@drawable/btn_style1_selector"
             android:text="下一步" />
 
     </RelativeLayout>
