@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 import com.ruffneck.mobilesafer.R;
 
@@ -27,5 +28,10 @@ public class LostFindActivity extends Activity{
             startActivity(new Intent(this,Setup1Activity.class));
         }
 
+    }
+
+    public void reenter(View view) {
+        startActivity(new Intent(this,Setup1Activity.class));
+        finish();
     }
 }
