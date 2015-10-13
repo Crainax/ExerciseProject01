@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ruffneck.mobilesafer.R;
+import com.ruffneck.mobilesafer.utils.MD5Utils;
 
 /**
  * Created by 佛剑分说 on 2015/10/9.
@@ -92,9 +93,10 @@ public class HomeActivity extends Activity {
                 String password = et_password.getText().toString();
 
                 if (!TextUtils.isEmpty(password)) {
-                    if(password.equals(mPref.getString("password",null))){
+                    if(MD5Utils.encode(password).equals(mPref.getString("password", null))){
                         Toast.makeText(HomeActivity.this, "登录成功!", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
+                        startActivity(new Intent(HomeActivity.this,LostFindActivity.class));
                     }else{
                         Toast.makeText(HomeActivity.this, "密码错误!", Toast.LENGTH_SHORT).show();
                     }
@@ -140,9 +142,10 @@ public class HomeActivity extends Activity {
                 if ((!TextUtils.isEmpty(password)) && (!TextUtils.isEmpty(password_confirm))) {
 
                     if (password.equals(password_confirm)) {
-                        mPref.edit().putString("password",password).apply();
+                        mPref.edit().putString("password", MD5Utils.encode(password)).apply();
                         Toast.makeText(HomeActivity.this, "成功设置密码!", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
+                        startActivity(new Intent(HomeActivity.this, LostFindActivity.class));
                     } else {
                         Toast.makeText(HomeActivity.this, "两次密码不一致", Toast.LENGTH_SHORT).show();
                     }
