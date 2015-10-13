@@ -68,6 +68,8 @@ public class SettingItemView extends RelativeLayout {
 
         if(mTitle != null)mtvTitle.setText(mTitle);
 
+        if(mDescOff != null)mtvDesc.setText(mDescOff);
+
     }
 
     public boolean isChecked(){
