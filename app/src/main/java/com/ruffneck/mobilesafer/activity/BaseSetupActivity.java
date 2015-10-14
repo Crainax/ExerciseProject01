@@ -1,6 +1,7 @@
 package com.ruffneck.mobilesafer.activity;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -13,10 +14,13 @@ import android.widget.Toast;
 public abstract class BaseSetupActivity extends Activity {
 
     private GestureDetector mDetector;
+    public SharedPreferences mPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mPref = getSharedPreferences("config",MODE_PRIVATE);
 
         mDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
             @Override

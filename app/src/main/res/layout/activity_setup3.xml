@@ -25,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_style2_selector"
+        android:onClick="chooseContact"
         android:text="选择一个联系人"/>
 
     <LinearLayout
