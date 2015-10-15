@@ -2,6 +2,7 @@ package com.ruffneck.mobilesafer.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.ruffneck.mobilesafer.R;
 
@@ -30,5 +31,9 @@ public class Setup3Activity extends BaseSetupActivity{
         startActivity(new Intent(this,Setup2Activity.class));
         finish();
         overridePendingTransition(R.anim.tran_previous_in, R.anim.tran_previous_out);
+    }
+
+    public void chooseContact(View v){
+        startActivity(new Intent(this,ContactsActivity.class));
     }
 }
