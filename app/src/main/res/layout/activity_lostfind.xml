@@ -17,6 +17,7 @@
             android:layout_marginBottom="8dp"/>
 
         <TextView
+            android:id="@+id/tv_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="13813131313"
@@ -47,6 +48,7 @@
             android:layout_marginBottom="8dp"/>
 
         <ImageView
+            android:id="@+id/iv_lock"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginRight="8dp"
@@ -72,7 +74,6 @@
         <TextView
             style="@style/Setup_Content"
             android:text="重新进入向导页面"
-            android:layout_marginLeft="0dp"
             android:layout_marginBottom="0dp"
             android:layout_marginTop="0dp"
             android:paddingTop="8dp"

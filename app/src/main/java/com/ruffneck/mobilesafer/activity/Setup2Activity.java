@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
 
 import com.ruffneck.mobilesafer.R;
 import com.ruffneck.mobilesafer.view.SettingItemView;
@@ -51,6 +52,13 @@ public class Setup2Activity extends BaseSetupActivity {
 
     @Override
     public void showNextPage() {
+        String sim = mPref.getString("sim",null);
+        
+        if(TextUtils.isEmpty(sim)){
+            Toast.makeText(Setup2Activity.this, "必须绑定sim卡!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
         startActivity(new Intent(this, Setup3Activity.class));
         finish();
         overridePendingTransition(R.anim.tran_in, R.anim.tran_out);

@@ -2,6 +2,7 @@ package com.ruffneck.mobilesafer.activity;
 
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,11 +28,10 @@ public class ContactsActivity extends Activity {
 
         ListView lv = (ListView) findViewById(R.id.lv);
 
-        ArrayList<HashMap<String,String>> list = readContact();
+        final ArrayList<HashMap<String,String>> list = readContact();
 
-
-
-        lv.setAdapter(new SimpleAdapter(this,list,R.layout.contacts_list_item,new String[]{"phone","name"},new int[]{R.id.tv_phone,R.id.tv_name}));
+        lv.setAdapter(new SimpleAdapter(this,list,R.layout.contacts_list_item,
+                new String[]{"phone","name"},new int[]{R.id.tv_phone,R.id.tv_name}));
 
         for(HashMap<String,String> map :list){
             System.out.println(map.toString());
@@ -40,6 +40,11 @@ public class ContactsActivity extends Activity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent data = new Intent();
+                data.putExtra("phone",list.get(position).get("phone"));
+                setResult(RESULT_OK,data);
+                finish();
 
             }
         });

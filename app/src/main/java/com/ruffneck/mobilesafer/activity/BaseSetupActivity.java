@@ -41,7 +41,7 @@ public abstract class BaseSetupActivity extends Activity {
                     return true;
                 }
 
-                if (e1.getRawX() - e2.getRawX() < 200) {
+                if (e2.getRawX() - e1.getRawX() > 200) {
                     showPreviousPage();
                     return true;
                 }

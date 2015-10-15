@@ -16,19 +16,21 @@ public class BootCompleteReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         SharedPreferences mPref = context.getSharedPreferences("config", Context.MODE_PRIVATE);
 
-        String sim = mPref.getString("sim",null);
-        if(!TextUtils.isEmpty(sim)){
-            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (mPref.getBoolean("protect", false)) {
+            String sim = mPref.getString("sim", null);
+            if (!TextUtils.isEmpty(sim)) {
+                TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
-            String currentSim = telephonyManager.getSimSerialNumber();
+                String currentSim = telephonyManager.getSimSerialNumber();
 
-            if(currentSim.equals(sim)){
-                System.out.println("手机安全");
-            }else{
-                System.out.println("手机被盗了!");
+                if (currentSim.equals(sim)) {
+                    System.out.println("手机安全");
+                } else {
+                    System.out.println("手机被盗了!");
+                }
+
             }
-
         }
-   }
+    }
 
 }
