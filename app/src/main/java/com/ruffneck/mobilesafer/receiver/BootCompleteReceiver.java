@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
@@ -17,16 +18,23 @@ public class BootCompleteReceiver extends BroadcastReceiver {
         SharedPreferences mPref = context.getSharedPreferences("config", Context.MODE_PRIVATE);
 
         if (mPref.getBoolean("protect", false)) {
+
             String sim = mPref.getString("sim", null);
             if (!TextUtils.isEmpty(sim)) {
                 TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
-                String currentSim = telephonyManager.getSimSerialNumber();
+                String currentSim = telephonyManager.getSimSerialNumber() +1;
 
                 if (currentSim.equals(sim)) {
                     System.out.println("手机安全");
                 } else {
                     System.out.println("手机被盗了!");
+
+                    SmsManager sm = SmsManager.getDefault();
+
+                    String address = mPref.getString("sim_phone","");
+                    sm.sendTextMessage(address,null,"sd card has changed!",null,null);
+
                 }
 
             }
