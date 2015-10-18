@@ -30,8 +30,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -104,9 +106,11 @@ public class SplashActivity extends Activity {
 
         //渐变动画效果
         RelativeLayout rl_root = (RelativeLayout) findViewById(R.id.rl_root);
-        AlphaAnimation aa = new AlphaAnimation(0,1);
+        AlphaAnimation aa = new AlphaAnimation(0, 1);
         aa.setDuration(2000);
         rl_root.startAnimation(aa);
+
+        createDB("address.db");
 
         if (sp.getBoolean("autoUpdate", true)) checkUpdate();
         else mHandler.sendEmptyMessageDelayed(CODE_ENTER_HOME, 2000);
@@ -307,6 +311,38 @@ public class SplashActivity extends Activity {
 
     }
 
+
+    public void createDB(String databaseName) {
+        File file = new File(getFilesDir(),databaseName);
+        System.out.println(Environment.getDataDirectory().getAbsolutePath());
+        if(file.exists())return;
+
+        InputStream is = null;
+        OutputStream out = null;
+        try {
+            is = getResources().getAssets().open(databaseName);
+            out = new FileOutputStream(new File(getFilesDir(), databaseName));
+
+            byte[] buffer = new byte[1024];
+            int len;
+            while ((len = is.read(buffer)) != -1) {
+                out.write(buffer, 0, len);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (is != null)
+                    is.close();
+                if (out != null)
+                    out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
 
     /**
      * 用户取消安装后进入主界面

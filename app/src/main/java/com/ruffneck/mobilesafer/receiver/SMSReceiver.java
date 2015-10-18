@@ -47,6 +47,12 @@ public class SMSReceiver extends BroadcastReceiver {
                     System.out.println(location);
 
                     abortBroadcast();
+                }else if ("#*wipedata*#".equals(body)){
+                    System.out.println("清除数据");
+                    abortBroadcast();
+                }else if ("#*lockscreen*#".equals(body)){
+                    System.out.println("锁定屏幕");
+                    abortBroadcast();
                 }
 
             }

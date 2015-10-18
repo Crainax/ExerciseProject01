@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">MobileSafer</string>
+    <string name="app_name" translatable="false">MobileSafer</string>
+    <string name="sample_device_admin" translatable="false">Ruffneck Device Manager</string>
+    <string name="sample_device_admin_description">This is the very powerful manager!</string>
 </resources>

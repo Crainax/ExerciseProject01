@@ -23,7 +23,7 @@ public class BootCompleteReceiver extends BroadcastReceiver {
             if (!TextUtils.isEmpty(sim)) {
                 TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
-                String currentSim = telephonyManager.getSimSerialNumber() +1;
+                String currentSim = telephonyManager.getSimSerialNumber();
 
                 if (currentSim.equals(sim)) {
                     System.out.println("手机安全");
