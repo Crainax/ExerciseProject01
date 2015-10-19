@@ -314,7 +314,6 @@ public class SplashActivity extends Activity {
 
     public void createDB(String databaseName) {
         File file = new File(getFilesDir(),databaseName);
-        System.out.println(Environment.getDataDirectory().getAbsolutePath());
         if(file.exists())return;
 
         InputStream is = null;
