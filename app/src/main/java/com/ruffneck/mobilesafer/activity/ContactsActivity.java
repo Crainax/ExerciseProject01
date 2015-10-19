@@ -15,6 +15,7 @@ import com.ruffneck.mobilesafer.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * Created by 佛剑分说 on 2015/10/14.
@@ -28,7 +29,7 @@ public class ContactsActivity extends Activity {
 
         ListView lv = (ListView) findViewById(R.id.lv);
 
-        final ArrayList<HashMap<String,String>> list = readContact();
+        final ArrayList<HashMap<String,String>> list = distinct(readContact());
 
         lv.setAdapter(new SimpleAdapter(this,list,R.layout.contacts_list_item,
                 new String[]{"phone","name"},new int[]{R.id.tv_phone,R.id.tv_name}));
@@ -91,4 +92,13 @@ public class ContactsActivity extends Activity {
 
         return contacts;
     }
+
+    public ArrayList<HashMap<String, String>> distinct(ArrayList<HashMap<String, String>> list){
+
+        HashSet<HashMap<String,String>> set = new HashSet<>(list);
+
+        return new ArrayList<>(set);
+
+    }
+
 }
