@@ -67,7 +67,6 @@ public class SettingItemView extends RelativeLayout {
         mcb = (CheckBox) findViewById(R.id.cb);
 
         if(mTitle != null)mtvTitle.setText(mTitle);
-
         if(mDescOff != null)mtvDesc.setText(mDescOff);
 
     }

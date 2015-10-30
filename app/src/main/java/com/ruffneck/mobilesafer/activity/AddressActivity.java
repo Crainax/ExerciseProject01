@@ -2,14 +2,13 @@ package com.ruffneck.mobilesafer.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.BounceInterpolator;
-import android.view.animation.Interpolator;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,10 +62,10 @@ public class AddressActivity extends Activity {
             tv_result.setText(address);
         }else{
             Animation animation = AnimationUtils.loadAnimation(this, R.anim.shake);
-
-            BounceInterpolator al;
             et_number.startAnimation(animation);
             Toast.makeText(AddressActivity.this, "输入框不能为空", Toast.LENGTH_SHORT).show();
+            Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+            vibrator.vibrate(200);
         }
     }
 }

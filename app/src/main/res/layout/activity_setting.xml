@@ -10,11 +10,19 @@
         android:text="设置" />
 
     <com.ruffneck.mobilesafer.view.SettingItemView
-        android:id="@+id/siv"
+        android:id="@+id/siv_autoupdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         ruffneck:item_title="自动更新设置"
         ruffneck:desc_on="自动更新已经开启"
         ruffneck:desc_off="自动更新已经关闭"/>
+
+    <com.ruffneck.mobilesafer.view.SettingItemView
+        android:id="@+id/siv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ruffneck:item_title="电话归属地查询设置"
+        ruffneck:desc_on="归属地查询已经开启"
+        ruffneck:desc_off="归属地查询已经关闭"/>
 
 </LinearLayout>
